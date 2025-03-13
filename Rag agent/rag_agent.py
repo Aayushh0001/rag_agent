@@ -1,16 +1,20 @@
+import os
 import wikipediaapi
 from googleapiclient.discovery import build
 import tkinter as tk
 from tkinter import scrolledtext
+from dotenv import load_dotenv
 import webbrowser
+
+load_dotenv()
+
+YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
 wiki_wiki = wikipediaapi.Wikipedia(
     language='en',
     user_agent='MyMovieApp/1.0 (https://example.com; myemail@example.com)'
 )
-
-YOUTUBE_API_KEY = "AIzaSyARSYGt01LiRLgKpaiGBYZUHV_Eb52CZoo" 
-
+ 
 def wikipedia_search(query):
     page = wiki_wiki.page(query)
     if page.exists():
